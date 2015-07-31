@@ -1,0 +1,47 @@
+<head>
+    <title>Meteorpics</title>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1"/>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,900' rel='stylesheet' type='text/css'>
+</head>
+<body class="blue-grey lighten-4">
+    {{> meteorpics}}
+</body>
+
+<template name="meteorpics">
+    <div class="container">
+        <h1>METEORPICS</h1>
+        <nav style="margin-bottom: 20px" class="blue-grey darken-4">
+            <div class="nav-wrapper">
+                <form>
+                    <div class="input-field">
+                        <input id="search" type="search" name="query" value="{{search}}">
+                        <input id="next_id" type="hidden" value="{{next}}">
+                        <label for="search" style="margin-left: 10px"><i class="mdi-action-search"></i></label>
+                    </div>
+                </form>
+            </div>
+        </nav>
+        {{#if searching}}
+            {{> spinner}}
+        {{else}}
+            {{#if pics.count}}
+                <div class="pics row">
+                    {{#each pics}}
+                        <div class="pic col s6 m4 l3">
+                            <img class="responsive-img z-depth-3" src="{{thumb}}">
+                        </div>
+                    {{/each}}
+                </div>
+                <div class="loading">
+                    {{#if paginate}}
+                        <div class="progress">
+                            <div class="indeterminate blue-grey darken-4"></div>
+                        </div>
+                    {{else}}
+                        <button class="btn get-more blue-grey darken-4">get more</button>
+                    {{/if}}
+                </div>
+            {{/if}}
+        {{/if}}
+    </div>
+</template>
