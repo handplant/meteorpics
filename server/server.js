@@ -1,6 +1,5 @@
 Future = Npm.require('fibers/future');
 
-//CLIENT_SECRET = "31f6e8888cad44e2889bb1764319f619";
 
 Meteor.methods({
     'getInstragramPics': function (query, maxTagId) {
